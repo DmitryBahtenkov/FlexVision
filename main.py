@@ -26,7 +26,7 @@ def index():
 # видео
 @app.route('/one-park')
 def video_feed():
-    return Response(gen(VideoCamera("videos/1.mp4"), Detector("detectors/parking_one.xml")),
+    return Response(gen(VideoCamera("videos/1.mp4"), Detector("detectors/cascade20.xml")),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
