@@ -19,7 +19,6 @@ def gen(camera, detector):
 
 
 
-# страничка панели управления
 @app.route('/')
 def index():
     return "Hello!"

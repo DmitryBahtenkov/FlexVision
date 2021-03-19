@@ -1,4 +1,7 @@
 class Calculator():
+
+
+
     def inPolygon(self, x, y, xp, yp):
         c = 0
         for i in range(len(xp)):
