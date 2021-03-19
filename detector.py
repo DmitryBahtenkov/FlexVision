@@ -15,7 +15,7 @@ class Detector(object):
         for (x, y, w, h) in cars:
             a,b = self.calculator.calc_one(x,y)
 
-            if (a < 0 and b < 0) or (a < 0 and b > 0):
+            if (a > 0 and b < 0) or (a < 0 and b > 0):
                 print(f'{x} {y} {w} {h}')
                 print(a, b)
                 cv2.rectangle(frames, (x, y), (x + w, y + h), (0, 0, 255), 2)
