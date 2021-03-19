@@ -13,11 +13,9 @@ class Detector(object):
         cars = self.cascade.detectMultiScale(gray, 1.1, 7)
 
         for (x, y, w, h) in cars:
-            a,b = self.calculator.calc_one(x,y)
-
-            if (a > 0 and b < 0) or (a < 0 and b > 0):
+            if (self.calculator.inPolygon(x, y, [552, 1507, 1551, 470], [485, 679, 808, 555]) > 0):
                 print(f'{x} {y} {w} {h}')
-                print(a, b)
+
                 cv2.rectangle(frames, (x, y), (x + w, y + h), (0, 0, 255), 2)
                 font = cv2.FONT_HERSHEY_DUPLEX
                 cv2.putText(frames, 'Car', (x + 6, y - 6), font, 0.5, (0, 0, 255), 1)

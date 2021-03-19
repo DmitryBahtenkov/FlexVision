@@ -6,7 +6,8 @@ import os
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'videos'
-ALLOWED_EXTENSIONS = set(['mp4', 'flv'])
+app.debug = True
+
 
 
 # при обращении функция вечно возвращает кадры в спец. формате
@@ -14,7 +15,8 @@ def gen(camera, detector):
     while True:
         frame = camera.get_detecting_frame(detector)
         yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+             b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
 
 
 # страничка панели управления
@@ -29,11 +31,6 @@ def video_feed():
     return Response(gen(VideoCamera("videos/1.mp4"), Detector("detectors/cascade20.xml")),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
-
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 if __name__ == '__main__':
     app.run(host='localhost')
