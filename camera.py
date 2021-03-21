@@ -16,6 +16,6 @@ class VideoCamera(object):
 
     def get_detecting_frame(self, detector, num):
         success, image = self.video.read()
-        detector.detect(image, num)
+        _, count = detector.detect(image, num)
         ret, jpeg = cv2.imencode('.jpg', image)
-        return jpeg.tobytes()
+        return jpeg.tobytes(), count

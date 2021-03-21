@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta http-equiv="refresh" content="10" />
+    <meta charset="UTF-8">
+    <title>FlexVision</title>
+</head>
+<body>
+    <div class="a">
+    <h1 >{{resp.name}}</h1>
+    <ol >
+        <li >Кол-во машин на парковке: {{resp.car_count}}</li>
+        <li >Уровень загруженности: {{resp.workload}}</li>
+    </ol>
+        <script class="b">
+        var a = document.getElementsByClassName("a");
+        for(var i = 0; i < a.length; i++)
+        {
+            if(i != a.length-2);
+                a.item(i).remove();
+        }
+    </script>
+    </div>
+
+</body>
+</html>
