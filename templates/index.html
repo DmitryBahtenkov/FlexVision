@@ -8,16 +8,22 @@
 <body>
     <div class="a">
     <h1 >{{resp.name}}</h1>
-    <ol >
+    <ol>
         <li >Кол-во машин на парковке: {{resp.car_count}}</li>
         <li >Уровень загруженности: {{resp.workload}}</li>
     </ol>
-        <script class="b">
-        var a = document.getElementsByClassName("a");
-        for(var i = 0; i < a.length; i++)
-        {
-            if(i != a.length-2);
-                a.item(i).remove();
+        <img src="http://localhost:5000/one-park" alt="http://localhost:5000/one-park" class="shrinkToFit" width="852" height="479">
+        <script>
+        window.onloadeddata = f()
+
+        function f() {
+            var item = document.getElementsByClassName("a")
+            for(var i = 0; i < item.length; i++)
+            {
+                if(i != item.length - 1) {
+                    item.item(i).setAttribute("hidden", "hidden")
+                }
+            }
         }
     </script>
     </div>
