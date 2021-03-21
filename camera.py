@@ -14,8 +14,8 @@ class VideoCamera(object):
         ret, jpeg = cv2.imencode('.jpg', image)
         return jpeg.tobytes()
 
-    def get_detecting_frame(self, detector):
+    def get_detecting_frame(self, detector, num):
         success, image = self.video.read()
-        detector.detect(image)
+        detector.detect(image, num)
         ret, jpeg = cv2.imencode('.jpg', image)
         return jpeg.tobytes()

@@ -11,9 +11,9 @@ app.debug = True
 
 
 # при обращении функция вечно возвращает кадры в спец. формате
-def gen(camera, detector):
+def gen(camera, detector, num):
     while True:
-        frame = camera.get_detecting_frame(detector)
+        frame = camera.get_detecting_frame(detector, num)
         yield (b'--frame\r\n'
              b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
@@ -26,10 +26,15 @@ def index():
 
 # видео
 @app.route('/one-park')
-def video_feed():
-    return Response(gen(VideoCamera("videos/1.mp4"), Detector("detectors/cascade20.xml")),
+def video_one_feed():
+    return Response(gen(VideoCamera("videos/1.mp4"), Detector("detectors/cascade20.xml"), 1),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
+
+@app.route('/two-park')
+def video_two_feed():
+    return Response(gen(VideoCamera("videos/2.mp4"), Detector("detectors/cascade.xml"), 2),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
     app.run(host='localhost')
