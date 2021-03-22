@@ -12,7 +12,7 @@
         <li >Кол-во машин на парковке: {{resp.car_count}}</li>
         <li >Уровень загруженности: {{resp.workload}}</li>
     </ol>
-        <img src="http://localhost:5000/one-park" alt="http://localhost:5000/one-park" class="shrinkToFit" width="852" height="479">
+        <img src="{{resp.video}}" alt="{{resp.video}}" class="shrinkToFit" width="852" height="479">
         <script>
         window.onloadeddata = f()
 
@@ -21,7 +21,7 @@
             for(var i = 0; i < item.length; i++)
             {
                 if(i != item.length - 1) {
-                    item.item(i).setAttribute("hidden", "hidden")
+                    item.item(i).remove()
                 }
             }
         }
