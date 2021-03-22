@@ -111,6 +111,18 @@ def video_two_data():
     return Response(stream_with_context(response))
 
 
+# @app.route('/custom')
+# def custom():
+#     # путь до видео
+#     path = request.args.get('path')
+#     # путь к нейронке
+#     detector = request.args.get('detector')
+#     # номер парковки - 1 - Ленина, 2 - Анохина
+#     park = request.args.get('park')
+#     response = gen_data(VideoCamera(path), Detector(detector), park, path)
+#
+#     return Response(stream_with_context(response))
+
 
 if __name__ == '__main__':
     app.run(host='localhost')
